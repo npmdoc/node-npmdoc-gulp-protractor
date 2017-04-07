@@ -1,0 +1,297 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mllrsohn/gulp-protractor">gulp-protractor (v4.1.0)</a>
+</h1>
+<h4>A helper for protactor and gulp</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-protractor">module gulp-protractor</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.getProtractorCli">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>getProtractorCli
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.getProtractorDir">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>getProtractorDir
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.protractor">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>protractor
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.webdriver_standalone">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_standalone
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.webdriver_update">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_update
+            <span class="apidocSignatureSpan">(opts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-protractor.webdriver_update_specific">
+            function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_update_specific
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-protractor" id="apidoc.module.gulp-protractor">module gulp-protractor</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.getProtractorCli" id="apidoc.element.gulp-protractor.getProtractorCli">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>getProtractorCli
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getProtractorCli() {
+	var result = require.resolve('protractor');
+	if (result) {
+		return result.replace('index', 'cli');
+	} else {
+		throw new Error('Please check whether protractor is installed or not.');
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.getProtractorDir" id="apidoc.element.gulp-protractor.getProtractorDir">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>getProtractorDir
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getProtractorDir() {
+	if (protractorDir) {
+		return protractorDir;
+	}
+	var result = require.resolve('protractor');
+	if (result) {
+		// console.log(result);
+		// result is now something like
+		// c:\\Source\\gulp-protractor\\node_modules\\protractor\\built\\index.js
+		protractorDir = path.resolve(path.join(path.dirname(result), '..', '..', '.bin'));
+		return protractorDir;
+	}
+	throw new Error('No protractor installation found.');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.protractor" id="apidoc.element.gulp-protractor.protractor">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>protractor
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">protractor = function (options) {
+	var files = [],
+		child, args;
+
+	options = options || {};
+	args = options.args || [];
+
+	return es.through(function(file) {
+		files.push(file.path);
+		this.push(file);
+	}, function() {
+		var stream = this;
+
+		// Enable debug mode
+		if (options.debug) {
+			args.push('debug');
+		}
+
+		// Attach Files, if any
+		if (files.length) {
+			args.push('--specs');
+			args.push(files.join(','));
+		}
+
+		// Pass in the config file
+		if (options.configFile) {
+			args.unshift(options.configFile);
+		}
+
+		// console.log(getProtractorCli());
+
+		// child = childProcess.spawn(path.resolve(getProtractorDir() + '/protractor'), args, {
+		child = childProcess.fork(getProtractorCli(), args, {
+			stdio: 'inherit',
+			env: process.env
+		}).on('exit', function(code) {
+			if (child) {
+				child.kill();
+			}
+			if (stream) {
+				if (code) {
+					stream.emit('error', new PluginError('gulp-protractor', 'protractor exited with code ' + code));
+				} else {
+					stream.emit('end');
+				}
+			}
+		});
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.webdriver_standalone" id="apidoc.element.gulp-protractor.webdriver_standalone">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_standalone
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">webdriver_standalone = function (cb) {
+	childProcess.spawn(path.resolve(getProtractorDir() + '/webdriver-manager' + winExt), ['start'], {
+		stdio: 'inherit'
+	}).once('close', cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.webdriver_update" id="apidoc.element.gulp-protractor.webdriver_update">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_update
+        <span class="apidocSignatureSpan">(opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">webdriver_update = function (opts, cb) {
+	var callback = (cb ? cb : opts);
+	var options = (cb ? opts : null);
+	var args = ['update', '--standalone'];
+	if (options) {
+		if (options.webdriverManagerArgs) {
+			options.webdriverManagerArgs.forEach(function(element) {
+				args.push(element);
+			});
+		}
+		if (options.browsers) {
+			options.browsers.forEach(function(element) {
+				args.push('--' + element);
+			});
+		}
+	}
+	childProcess.spawn(path.resolve(getProtractorDir() + '/webdriver-manager' + winExt), args, {
+		stdio: 'inherit'
+	}).once('close', callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-protractor.webdriver_update_specific" id="apidoc.element.gulp-protractor.webdriver_update_specific">
+        function <span class="apidocSignatureSpan">gulp-protractor.</span>webdriver_update_specific
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">webdriver_update_specific = function (opts) {
+	return wdUpdate.bind(this, opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
