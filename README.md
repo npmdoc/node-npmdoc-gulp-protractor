@@ -1,6 +1,6 @@
 # npmdoc-gulp-protractor
 
-#### api documentation for  [gulp-protractor (v4.1.0)](https://github.com/mllrsohn/gulp-protractor)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-protractor.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-protractor) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-protractor.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-protractor)
+#### basic api documentation for  [gulp-protractor (v4.1.0)](https://github.com/mllrsohn/gulp-protractor)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-protractor.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-protractor) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-protractor.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-protractor)
 
 #### A helper for protactor and gulp
 
@@ -93,7 +93,8 @@
         "test": "mocha",
         "wd:update": "webdriver-manager update"
     },
-    "version": "4.1.0"
+    "version": "4.1.0",
+    "bin": {}
 }
 ```
 
