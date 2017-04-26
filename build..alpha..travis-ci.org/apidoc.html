@@ -225,7 +225,25 @@
 		});
 	});
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// Download and update the selenium driver
+gulp.task(&#x27;e2etests:webdriver_manager_update&#x27;, &#x27;updates the selenium server standalone jar file &#x27;, gp.webdriver_update
+);
+
+gulp.task(&#x27;e2etests:run&#x27;, &#x27;runs e2etests using protractor.conf&#x27;, [&#x27;e2etests:server&#x27;, &#x27;e2etests
+:webdriver_manager_update&#x27;], function(cb) {
+
+	gulp.src([&#x27;tests/e2e/**/*.js&#x27;], { read: false })
+		.pipe(gp.<span class="apidocCodeKeywordSpan">protractor</span>({
+			configFile: &#x27;protractor.conf.js&#x27;,
+			args: [&#x27;--baseUrl&#x27;, &#x27;http://&#x27; + server.address().address + &#x27;:&#x27; + server.address().port]
+		})).on(&#x27;error&#x27;, function(e) {
+			server.close();
+			if (isCI) {
+				throw e;
+			} else {
+...</pre></li>
     </ul>
 
 
